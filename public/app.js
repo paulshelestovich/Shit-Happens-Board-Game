@@ -168,13 +168,15 @@ function renderGame(state) {
   if (state.active) {
     show("active-area");
     const card = state.active.card;
-    if (card.img) {
-      $("active-card-img").src = `/cards/${card.img}`;
-      $("active-card-img").alt = card.text;
-      show("active-card-img-wrap");
+    const activeImgEl = $("active-card-img");
+    const activeImgWrap = $("active-card-img-wrap");
+    if (card.img && activeImgEl) {
+      activeImgEl.src = `/cards/${card.img}`;
+      activeImgEl.alt = card.text;
+      if (activeImgWrap) show("active-card-img-wrap");
       $("active-card-text").classList.add("hidden");
     } else {
-      hide("active-card-img-wrap");
+      if (activeImgWrap) hide("active-card-img-wrap");
       $("active-card-text").classList.remove("hidden");
       $("active-card-text").textContent = card.text;
     }
@@ -235,13 +237,17 @@ function renderResult(r) {
   } else {
     text = `❌ Wrong — steal it!`;
   }
-  $(“result-text”).innerHTML = text;
-  if (r.cardImg && r.revealedIndex !== undefined) {
-    $(“result-card-img”).src = `/cards/${r.cardImg}`;
-    $(“result-card-img”).alt = r.cardText;
-    show(“result-card-img-wrap”);
+  const resultTextEl = $(“result-text”);
+  if (resultTextEl) resultTextEl.innerHTML = text;
+  else el.innerHTML = text;
+  const resultImgEl = $(“result-card-img”);
+  const resultImgWrap = $(“result-card-img-wrap”);
+  if (r.cardImg && r.revealedIndex !== undefined && resultImgEl) {
+    resultImgEl.src = `/cards/${r.cardImg}`;
+    resultImgEl.alt = r.cardText;
+    if (resultImgWrap) show(“result-card-img-wrap”);
   } else {
-    hide(“result-card-img-wrap”);
+    if (resultImgWrap) hide(“result-card-img-wrap”);
   }
 }
 

@@ -13,6 +13,11 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// Never cache the shell HTML so clients always pick up new asset versions.
+app.get("/", (_req, res) => {
+  res.setHeader("Cache-Control", "no-store");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/healthz", (_req, res) => res.send("ok"));
 
