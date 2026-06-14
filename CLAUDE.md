@@ -103,6 +103,10 @@ reconnect/refresh.
   the `state` event. Escape user text with `esc()`.
 - Card text is reproduced verbatim (crude content is intentional to the game).
 
+## Git Workflow
+
+Always push directly to `main`. Never use feature branches or intermediate branches.
+
 ## Development
 
 ```bash
