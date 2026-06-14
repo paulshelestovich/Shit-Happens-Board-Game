@@ -220,16 +220,16 @@ function renderGame(state) {
 }
 
 function renderResult(r) {
-  const el = $(“result-banner”);
+  const el = $("result-banner");
   if (!r) {
-    hide(“result-banner”);
+    hide("result-banner");
     return;
   }
-  show(“result-banner”);
-  el.classList.toggle(“good”, !!r.correct);
-  el.classList.toggle(“bad”, !r.correct);
-  const idx = `”${esc(r.cardText)}” = Misery Index ${r.revealedIndex}`;
-  let text = “”;
+  show("result-banner");
+  el.classList.toggle("good", !!r.correct);
+  el.classList.toggle("bad", !r.correct);
+  const idx = `"${esc(r.cardText)}" = Misery Index ${r.revealedIndex}`;
+  let text = "";
   if (r.correct) {
     text = `✅ ${esc(r.winnerName)} nailed it! ${idx}`;
   } else if (r.discarded) {
@@ -237,17 +237,17 @@ function renderResult(r) {
   } else {
     text = `❌ Wrong — steal it!`;
   }
-  const resultTextEl = $(“result-text”);
+  const resultTextEl = $("result-text");
   if (resultTextEl) resultTextEl.innerHTML = text;
   else el.innerHTML = text;
-  const resultImgEl = $(“result-card-img”);
-  const resultImgWrap = $(“result-card-img-wrap”);
+  const resultImgEl = $("result-card-img");
+  const resultImgWrap = $("result-card-img-wrap");
   if (r.cardImg && r.revealedIndex !== undefined && resultImgEl) {
     resultImgEl.src = `/cards/${r.cardImg}`;
     resultImgEl.alt = r.cardText;
-    if (resultImgWrap) show(“result-card-img-wrap”);
+    if (resultImgWrap) show("result-card-img-wrap");
   } else {
-    if (resultImgWrap) hide(“result-card-img-wrap”);
+    if (resultImgWrap) hide("result-card-img-wrap");
   }
 }
 
