@@ -362,6 +362,37 @@ button:disabled {
   font-size: 4rem;
 }
 
+/* ---------- Card images ---------- */
+.card-img-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px auto;
+  max-width: 220px;
+}
+/* Secret phase: clip bottom ~22% to hide the Misery Index number.
+   Image is ~300×388px (proportional to 567×733).
+   78% of 388 ≈ 302px, but we use a pixel height tuned to the actual images. */
+.card-img-wrap.secret {
+  height: 220px;
+}
+/* Full reveal in result banner */
+.card-img-wrap.result {
+  max-width: 180px;
+  margin: 0 auto 10px;
+}
+.card-img {
+  width: 100%;
+  display: block;
+}
+
+/* Lane card thumbnail */
+.lane-card-img {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
 .toast {
   position: fixed;
   left: 50%;

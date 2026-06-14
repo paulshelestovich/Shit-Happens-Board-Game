@@ -59,6 +59,9 @@
       <div id="active-area" class="active-area hidden">
         <div class="situation-card" id="active-card">
           <div class="card-label">Shitty Situation</div>
+          <div id="active-card-img-wrap" class="card-img-wrap secret hidden">
+            <img id="active-card-img" class="card-img" src="" alt="">
+          </div>
           <div class="card-text" id="active-card-text"></div>
           <div class="card-index hidden" id="active-card-index"></div>
         </div>
@@ -66,7 +69,12 @@
       </div>
 
       <!-- Result toast / reveal -->
-      <div id="result-banner" class="result-banner hidden"></div>
+      <div id="result-banner" class="result-banner hidden">
+        <div id="result-card-img-wrap" class="card-img-wrap result hidden">
+          <img id="result-card-img" class="card-img" src="" alt="">
+        </div>
+        <div id="result-text"></div>
+      </div>
 
       <!-- Draw button for the active player -->
       <button id="btn-draw" class="primary big hidden">Draw a Card</button>

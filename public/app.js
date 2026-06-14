@@ -167,7 +167,17 @@ function renderGame(state) {
   // Active card
   if (state.active) {
     show("active-area");
-    $("active-card-text").textContent = state.active.card.text;
+    const card = state.active.card;
+    if (card.img) {
+      $("active-card-img").src = `/cards/${card.img}`;
+      $("active-card-img").alt = card.text;
+      show("active-card-img-wrap");
+      $("active-card-text").classList.add("hidden");
+    } else {
+      hide("active-card-img-wrap");
+      $("active-card-text").classList.remove("hidden");
+      $("active-card-text").textContent = card.text;
+    }
     hide("active-card-index");
     const guesser = state.players.find((p) => p.id === state.active.guesserId);
     const myGuess = state.active.guesserId === myId;
@@ -208,23 +218,38 @@ function renderGame(state) {
 }
 
 function renderResult(r) {
-  const el = $("result-banner");
-  if (!r) return hide("result-banner");
-  show("result-banner");
-  el.classList.toggle("good", !!r.correct);
-  el.classList.toggle("bad", !r.correct);
-  const idx = `“${esc(r.cardText)}” = Misery Index ${r.revealedIndex}`;
+  const el = $(“result-banner”);
+  if (!r) {
+    hide(“result-banner”);
+    return;
+  }
+  show(“result-banner”);
+  el.classList.toggle(“good”, !!r.correct);
+  el.classList.toggle(“bad”, !r.correct);
+  const idx = `”${esc(r.cardText)}” = Misery Index ${r.revealedIndex}`;
+  let text = “”;
   if (r.correct) {
-    el.innerHTML = `✅ ${esc(r.winnerName)} nailed it! ${idx}`;
+    text = `✅ ${esc(r.winnerName)} nailed it! ${idx}`;
   } else if (r.discarded) {
-    el.innerHTML = `❌ Nobody got it — discarded. ${idx}`;
+    text = `❌ Nobody got it — discarded. ${idx}`;
   } else {
-    el.innerHTML = `❌ Wrong — steal it! ${idx ? "" : ""}`;
+    text = `❌ Wrong — steal it!`;
+  }
+  $(“result-text”).innerHTML = text;
+  if (r.cardImg && r.revealedIndex !== undefined) {
+    $(“result-card-img”).src = `/cards/${r.cardImg}`;
+    $(“result-card-img”).alt = r.cardText;
+    show(“result-card-img-wrap”);
+  } else {
+    hide(“result-card-img-wrap”);
   }
 }
 
 function laneCardHtml(c) {
-  return `<div class="lane-card"><span class="num">${c.index}</span><span>${esc(
+  const imgHtml = c.img
+    ? `<img src="/cards/${c.img}" class="lane-card-img" alt="${esc(c.text)}">`
+    : "";
+  return `<div class="lane-card">${imgHtml}<span class="num">${c.index}</span><span>${esc(
     c.text
   )}</span></div>`;
 }

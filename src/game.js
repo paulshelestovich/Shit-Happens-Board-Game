@@ -100,6 +100,7 @@ function guess(room, playerId, slot) {
     room.lastResult = {
       cardText: card.text,
       revealedIndex: card.index,
+      cardImg: card.img,
       correct: true,
       winnerId: guesser.id,
       winnerName: guesser.name,
@@ -121,6 +122,7 @@ function guess(room, playerId, slot) {
     room.lastResult = {
       cardText: card.text,
       revealedIndex: card.index,
+      cardImg: card.img,
       correct: false,
       winnerId: null,
       winnerName: null,
@@ -178,6 +180,7 @@ function handleDisconnect(room) {
         room.lastResult = {
           cardText: room.active.card.text,
           revealedIndex: room.active.card.index,
+          cardImg: room.active.card.img,
           correct: false,
           winnerId: null,
           winnerName: null,

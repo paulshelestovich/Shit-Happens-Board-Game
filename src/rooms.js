@@ -78,11 +78,11 @@ function serialize(room) {
       name: p.name,
       score: p.score,
       connected: p.connected,
-      lane: p.lane.map((c) => ({ id: c.id, text: c.text, index: c.index })),
+      lane: p.lane.map((c) => ({ id: c.id, text: c.text, index: c.index, img: c.img })),
     })),
     active: room.active
       ? {
-          card: { id: room.active.card.id, text: room.active.card.text }, // no index!
+          card: { id: room.active.card.id, text: room.active.card.text, img: room.active.card.img }, // no index!
           guesserId: room.players[room.active.guesserIndex]
             ? room.players[room.active.guesserIndex].id
             : null,

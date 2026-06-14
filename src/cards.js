@@ -217,6 +217,7 @@ const DECK = ORDERED_SITUATIONS.map((text, i) => ({
   id: i + 1,
   text,
   index: 1 + i * 0.5,
+  img: `card-${String(i).padStart(3, '0')}.jpg`,
 }));
 
 module.exports = DECK;
