@@ -369,12 +369,13 @@ button:disabled {
   margin: 8px auto;
   max-width: 220px;
 }
-/* Secret phase: clip bottom ~28% to hide the Misery Index number AND label.
-   Image is ~300×388px (proportional to 567×733).
-   The yellow Misery Index box starts at ~72% = ~279px, so clip at 270px
-   to ensure the number is never visible. */
+/* Secret phase: clip the bottom to hide the Misery Index number AND label.
+   Image heights vary: 300×336 (card-000) to 300×389 (standard cards).
+   The Misery Index section appears at different positions per card, but
+   always starts at or below y=215 even in the worst case (card-000).
+   220px safely clips the number for all cards while showing the title. */
 .card-img-wrap.secret {
-  height: 270px;
+  height: 220px;
 }
 /* Full reveal in result banner */
 .card-img-wrap.result {
