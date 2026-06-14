@@ -1,0 +1,11 @@
+# One-click deploy to Render (https://render.com).
+# In Render: New + > Blueprint > point at this repo. PORT is provided by Render.
+services:
+  - type: web
+    name: shit-happens
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
