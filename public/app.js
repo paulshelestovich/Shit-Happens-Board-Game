@@ -253,11 +253,9 @@ function renderResult(r) {
 
 function laneCardHtml(c) {
   const imgHtml = c.img
-    ? `<img src="/cards/${c.img}" class="lane-card-img" alt="${esc(c.text)}">`
-    : "";
-  return `<div class="lane-card">${imgHtml}<span class="num">${c.index}</span><span>${esc(
-    c.text
-  )}</span></div>`;
+    ? `<div class="lane-card-img-wrap"><img src="/cards/${c.img}" class="lane-card-img" alt="${esc(c.text)}"></div>`
+    : `<span class="num">${c.index}</span>`;
+  return `<div class="lane-card">${imgHtml}<span>${esc(c.text)}</span></div>`;
 }
 
 function renderMyLane(lane, guessable) {

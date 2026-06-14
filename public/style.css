@@ -387,12 +387,18 @@ button:disabled {
   display: block;
 }
 
-/* Lane card thumbnail */
+/* Lane card thumbnail — crop bottom white strip from PDF padding */
+.lane-card-img-wrap {
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  aspect-ratio: 567 / 690;
+}
 .lane-card-img {
   width: 100%;
-  border-radius: 5px;
   display: block;
-  margin-bottom: 4px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .toast {
