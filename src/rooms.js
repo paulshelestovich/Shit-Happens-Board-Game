@@ -6,7 +6,7 @@ const { randomUUID } = require("crypto");
 const rooms = new Map(); // code -> room
 
 const MAX_PLAYERS = 10;
-const CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no easily-confused chars
+const CODE_CHARS = "0123456789";
 
 function generateCode() {
   let code;

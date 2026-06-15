@@ -43,7 +43,7 @@ $("btn-create").onclick = () => {
 
 $("btn-join").onclick = () => {
   const name = $("name-input").value.trim() || "Player";
-  const code = $("code-input").value.trim().toUpperCase();
+  const code = $("code-input").value.trim();
   if (!code) return ($("landing-error").textContent = "Enter a room code.");
   socket.emit("join", { code, name }, (res) => {
     if (!res.ok) return ($("landing-error").textContent = res.error);
