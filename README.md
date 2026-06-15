@@ -1,11 +1,13 @@
 # 💩 Shit Happens — Online
 
+**Live:** https://shit-happens-kf76.onrender.com · [Render dashboard](https://dashboard.render.com/web/srv-d8n9tujtqb8s73cuef0g)
+
 A free, browser-based, **real-time multiplayer** version of the party card game
 *Shit Happens: Spring 2020 Edition*. Up to **10 players** join a room from their
 own phones/laptops and take turns ranking life's miseries from bad to absolute
 catastrophe.
 
-No accounts, no database — create a room, share the 4-letter code, and play.
+No accounts, no database — create a room, share the 3-digit code, and play.
 
 ## How to play
 
